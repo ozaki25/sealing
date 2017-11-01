@@ -50,8 +50,8 @@ public class PlayerController {
 
     @PostMapping
     public String create(@ModelAttribute Player player) {
-        playerService.save(player);
-        return "redirect:/players";
+        Player p = playerService.save(player);
+        return "redirect:/players/" + p.getId();
     }
 
     @PutMapping("{id}")

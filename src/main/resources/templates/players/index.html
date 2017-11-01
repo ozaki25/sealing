@@ -34,16 +34,12 @@
                 <tr>
                   <th>ID</th>
                   <th>名前</th>
-                  <th></th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr th:each="player:${players}" th:object="${player}">
                   <td th:text="*{id}"></td>
                   <td th:text="*{name}"></td>
-                  <td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>
-                  <td><a class="btn btn-default btn-xs" th:href="@{/players/{id}(id=*{id})}">参照</a></td>
                 </tr>
               </tbody>
             </table>
