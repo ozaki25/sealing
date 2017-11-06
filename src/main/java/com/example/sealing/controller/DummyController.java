@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.sealing.entity.Player;
 import com.example.sealing.service.PlayerService;
+import com.example.sealing.type.RoleType;
 
 @Controller
 @RequestMapping("/dummy/players")
@@ -30,12 +31,14 @@ public class DummyController {
     @GetMapping("new")
     public String newPlayer(Model model) {
         model.addAttribute("player", new Player());
+        model.addAttribute("roles", RoleType.values());
         return "dummy/players/new";
     }
 
     @GetMapping("{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
         model.addAttribute("player", playerService.findOne(id));
+        model.addAttribute("roles", RoleType.values());
         return "dummy/players/edit";
     }
 

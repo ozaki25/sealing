@@ -8,4 +8,6 @@ import com.example.sealing.entity.Player;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
+    Player findByUserId(String userId);
+
 }
