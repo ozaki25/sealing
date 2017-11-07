@@ -28,12 +28,12 @@
                   <input class="form-control" type="text" th:field="*{password}" />
                   <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                 </div>
-                <div class="form-group" th:classappend="${#fields.hasErrors('role')}? has-error">
+                <div class="form-group" th:classappend="${#fields.hasErrors('roleType')}? has-error">
                   <label class="control-label">権限</label>
-                  <select class="form-control" th:field="*{role}">
-                    <option th:each="role:${roles}" th:value="${role.name}" th:text="${role.name}"></option>
+                  <select class="form-control" th:field="*{roleType}">
+                    <option th:each="role:${roles}" th:value="${role.value}" th:text="${role.label}"></option>
                   </select>
-                  <span class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
+                  <span class="text-danger" th:if="${#fields.hasErrors('roleType')}" th:errors="*{roleType}"></span>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary pull-right">作成</button>

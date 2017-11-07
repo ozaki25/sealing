@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.example.sealing.type.RoleType;
+
 @Entity
 public class Player {
     @Id
@@ -14,7 +16,7 @@ public class Player {
     @Column(unique = true)
     private String userId;
     private String password;
-    private String role;
+    private Integer roleType;
 
     public Long getId() {
         return id;
@@ -40,10 +42,13 @@ public class Player {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getRole() {
-        return role;
+    public Integer getRoleType() {
+        return roleType;
     }
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleType(Integer roleType) {
+        this.roleType = roleType;
+    }
+    public String getRoleTypeLabel() {
+        return RoleType.getRoleTypeByValue(this.roleType).getLabel();
     }
 }

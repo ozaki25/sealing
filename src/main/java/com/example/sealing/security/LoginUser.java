@@ -12,7 +12,7 @@ public class LoginUser extends User {
     private final String password;
 
     public LoginUser(Player player) {
-        super(player.getUserId(), player.getPassword(), AuthorityUtils.createAuthorityList(RoleType.valueOf(player.getRole()).getAuthority()));
+        super(player.getUserId(), player.getPassword(), AuthorityUtils.createAuthorityList(RoleType.getRoleTypeByValue(player.getRoleType()).getAuthority()));
         this.player = player;
         this.username = player.getUserId();
         this.password = player.getPassword();
