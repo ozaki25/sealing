@@ -1,7 +1,5 @@
 package com.example.sealing.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.sealing.entity.Player;
 import com.example.sealing.service.PlayerService;
+import com.example.sealing.type.RoleType;
 
 @Controller
 @RequestMapping("/players")
@@ -24,34 +23,34 @@ public class PlayerController {
 
     @GetMapping
     public String index(Model model) {
-        List<Player> players = playerService.findAll();
-        model.addAttribute("players", players);
+        model.addAttribute("players", playerService.findAll());
         return "players/index";
     }
 
     @GetMapping("new")
     public String newPlayer(Model model) {
+        model.addAttribute("player", new Player());
+        model.addAttribute("roles", RoleType.values());
         return "players/new";
     }
 
     @GetMapping("{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
-        Player player = playerService.findOne(id);
-        model.addAttribute("player", player);
+        model.addAttribute("player", playerService.findOne(id));
+        model.addAttribute("roles", RoleType.values());
         return "players/edit";
     }
 
     @GetMapping("{id}")
     public String show(@PathVariable Long id, Model model) {
-        Player player = playerService.findOne(id);
-        model.addAttribute("player", player);
+        model.addAttribute("player", playerService.findOne(id));
         return "players/show";
     }
 
     @PostMapping
     public String create(@ModelAttribute Player player) {
-        Player p = playerService.save(player);
-        return "redirect:/players/" + p.getId();
+        playerService.save(player);
+        return "redirect:/players";
     }
 
     @PutMapping("{id}")
