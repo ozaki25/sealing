@@ -12,7 +12,7 @@
               <strong class="panel-title">メニュー</strong>
             </div>
             <div class="list-group">
-              <a href="/players" class="list-group-item">選手管理</a>
+              <a sec:authorize="hasRole('ADMIN')" href="/players" class="list-group-item">選手管理</a>
             </div>
           </div>
         </div>
