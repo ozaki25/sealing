@@ -2,7 +2,7 @@ package com.example.sealing.type;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public enum RoleType implements GrantedAuthority  {
+public enum RoleType implements GrantedAuthority {
     USER("ROLE_USER", "一般", 0),
     ADMIN("ROLE_ADMIN", "管理者", 1);
 
