@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+  <head>
+    <title>Editing Current User Password</title>
+  </head>
+  <body>
+    <div class="container" layout:fragment="content">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong class="panel-title">パスワード変更</strong>
+            </div>
+            <div class="panel-body">
+              <form th:action="@{/current_user/password}" th:method="patch">
+                <div class="form-group">
+                  <label class="control-label">パスワード</label>
+                  <input class="form-control" type="password" name="password" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label">パスワード(確認)</label>
+                  <input class="form-control" type="password" name="passwordConfirm" />
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary pull-right">更新</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <a href="home" class="btn btn-link pull-right">メニューへ</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

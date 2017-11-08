@@ -22,13 +22,13 @@
             <li><a href="/dummy/players">DummyUser</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" sec:authorize="isAuthenticated()">
-                <span sec:authentication="name"></span>
+            <li class="dropdown" sec:authorize="isAuthenticated()">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span th:text="${session.currentUser.name}"></span>
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">パスワード変更</a></li>
+                <li><a href="/current_user/password/edit">パスワード変更</a></li>
                 <li><a href="/logout">ログアウト</a></li>
               </ul>
             </li>

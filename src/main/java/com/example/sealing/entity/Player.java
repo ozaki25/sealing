@@ -51,4 +51,9 @@ public class Player {
     public String getRoleTypeLabel() {
         return RoleType.getRoleTypeByValue(this.roleType).getLabel();
     }
+
+    @Override
+    public String toString() {
+        return "Player [id=" + id + ", name=" + name + ", userId=" + userId + ", password=" + password + ", roleType=" + roleType + "]";
+    }
 }
