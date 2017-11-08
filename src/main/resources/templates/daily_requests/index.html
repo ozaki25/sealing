@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
   <head>
-    <title>Listing Requests</title>
+    <title>Listing Daily Requests</title>
   </head>
   <body>
     <div class="container" layout:fragment="content">
@@ -9,31 +9,29 @@
         <div class="col-md-8 col-md-offset-2">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <strong class="panel-title">申請一覧</strong>
-              <a href="/requests/new" class="btn btn-default btn-xs pull-right">新規作成</a>
+              <strong class="panel-title">日別申請一覧</strong>
+              <a href="/daily_requests/new" class="btn btn-default btn-xs pull-right">新規作成</a>
             </div>
             <table class="table">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>名前</th>
-                  <th>作成日時</th>
-                  <th>更新日時</th>
+                  <th>ステータス</th>
+                  <th>件数</th>
                   <th></th>
                   <th></th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="request:${requests}" th:object="${request}">
+                <tr th:each="dailyRequest:${dailyRequests}" th:object="${dailyRequest}">
                   <td th:text="*{id}"></td>
-                  <td th:text="*{name}"></td>
-                  <td th:text="*{#calendars.format(createdAt,'yyyy/MM/dd HH:mm')}"></td>
-                  <td th:text="*{#calendars.format(updatedAt,'yyyy/MM/dd HH:mm')}"></td>
-                  <td><a class="btn btn-default btn-xs" th:href="@{/requests/{id}(id=*{id})}">参照</a></td>
-                  <td><a class="btn btn-default btn-xs" th:href="@{/requests/{id}/edit(id=*{id})}">編集</a></td>
+                  <td th:text="*{statusTypeName}"></td>
+                  <td th:text="*{requests.size()}"></td>
+                  <td><a class="btn btn-default btn-xs" th:href="@{/daily_requests/{id}(id=*{id})}">参照</a></td>
+                  <td><a class="btn btn-default btn-xs" th:href="@{/daily_requests/{id}/edit(id=*{id})}">編集</a></td>
                   <td>
-                    <form th:action="@{/requests/{id}(id=*{id})}" th:method="delete">
+                    <form th:action="@{/daily_requests/{id}(id=*{id})}" th:method="delete">
                       <button class="btn btn-default btn-xs">削除</button>
                     </form>
                   </td>
