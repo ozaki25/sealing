@@ -1,4 +1,5 @@
 package com.example.sealing.service;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class DailyRequestService {
     @Transactional
     public DailyRequest findOne(Long id) {
         return dailyRequestRepository.findOne(id);
+    }
+
+    @Transactional
+    public DailyRequest findByDate(Date date) {
+        return dailyRequestRepository.findByDate(date);
     }
 
     @Transactional

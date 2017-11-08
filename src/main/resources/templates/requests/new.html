@@ -2,6 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
   <head>
     <title>New Request</title>
+    <link rel="stylesheet" href="/css/bootstrap-datepicker3.min.css" />
+    <script src="/js/bootstrap-datepicker.min.js"></script>
+    <script>
+      $(function() {
+        $('#datepicker').datepicker({
+            format: "yyyy/mm/dd",
+            clearBtn: true,
+            autoclose: true,
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="container" layout:fragment="content">
@@ -18,13 +29,18 @@
                   <input class="form-control" type="text" th:field="*{name}" />
                   <span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
                 </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('date')}? has-error">
+                  <label class="control-label">日付</label>
+                  <input class="form-control" type="text" id="datepicker" th:field="*{date}" />
+                  <span class="text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
+                </div>
                 <div class="form-group">
                   <button class="btn btn-primary pull-right">作成</button>
                 </div>
               </form>
             </div>
           </div>
-          <a href="/requests" class="btn btn-link pull-right">一覧画面へ</a>
+          <a href="home" class="btn btn-link pull-right">トップページへ</a>
         </div>
       </div>
     </div>
