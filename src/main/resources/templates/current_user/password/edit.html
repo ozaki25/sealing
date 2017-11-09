@@ -12,7 +12,7 @@
               <strong class="panel-title">パスワード変更</strong>
             </div>
             <div class="panel-body">
-              <form th:action="@{/current_user/password}" th:method="patch">
+              <form th:action="@{/current_user/password}" th:method="put">
                 <div class="form-group">
                   <label class="control-label">パスワード</label>
                   <input class="form-control" type="password" name="password" />
