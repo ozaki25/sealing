@@ -1,2 +1,2 @@
 delete from player;
-insert into player (name, user_id, password, role_type) values ('ユーザ1', 'user1', 'pass', 0), ('ユーザ2', 'user2', 'pass', 1);
+insert into player (name, user_id, password, role_type) values ('アドミン', 'admin', 'pass', 1), ('ユーザ', 'user', 'pass', 0);
