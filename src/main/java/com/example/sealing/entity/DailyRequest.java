@@ -57,6 +57,19 @@ public class DailyRequest {
         return StatusType.getStatusTypeByValue(this.statusType).getName();
     }
 
+    // getってつけないとthymeleafから見えない？ので動かすためにこのメソッド名
+    public boolean getCanSubmitStatus() {
+        return statusType == 0 || statusType == 2;
+    }
+
+    public boolean getCanRejectStatus() {
+        return statusType == 1;
+    }
+
+    public boolean getCanApproveStatus() {
+        return statusType == 1;
+    }
+
     @Override
     public String toString() {
         return "DailyRequest [id=" + id + ", date=" + date + ", statusType=" + statusType + ", requests=" + requests

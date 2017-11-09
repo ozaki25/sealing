@@ -11,6 +11,9 @@
             <div class="panel-heading">
               <strong class="panel-title">日別申請一覧</strong>
             </div>
+            <div class="panel-body" th:if="${successMessage}">
+              <div class="alert alert-success" th:text="${successMessage}"></div>
+            </div>
             <table class="table">
               <thead>
                 <tr>

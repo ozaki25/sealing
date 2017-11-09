@@ -41,6 +41,18 @@
                 </tr>
               </tbody>
             </table>
+            <div class="panel-body" th:object="${dailyRequest}">
+              <form th:method="put" th:action="@{/daily_requests/{id}/status(id=*{id})}">
+                <!-- hasRoleとcanXxxStatusを&&で書く方法が分からないからそれぞれ別のタグでチェックしてる -->
+                <div class="pull-right" sec:authorize="hasRole('USER')">
+                  <button th:if="*{canSubmitStatus}" class="btn btn-primary" name="action" value="submit">申請</button>
+                </div>
+                <div class="pull-right" sec:authorize="hasRole('ADMIN')">
+                  <button th:if="*{canRejectStatus}"  class="btn btn-default" name="action" value="reject">差戻し</button>
+                  <button th:if="*{canApproveStatus}" class="btn btn-primary" name="action" value="approve">承認</button>
+                </div>
+              </form>
+            </div>
           </div>
           <a href="/daily_requests" class="btn btn-link pull-right">一覧画面へ</a>
         </div>

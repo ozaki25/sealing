@@ -35,6 +35,11 @@ public class DailyRequestService {
     }
 
     @Transactional
+    public void updateStatus(Long id, Integer statusType) {
+        dailyRequestRepository.updateStatus(id, statusType);
+    }
+
+    @Transactional
     public void delete(Long id) {
         dailyRequestRepository.delete(id);
     }
