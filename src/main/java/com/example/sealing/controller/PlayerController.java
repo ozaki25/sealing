@@ -1,8 +1,11 @@
 package com.example.sealing.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,14 +52,16 @@ public class PlayerController {
     }
 
     @PostMapping
-    public String create(RedirectAttributes attributes, @ModelAttribute Player player) {
+    public String create(@Valid @ModelAttribute Player player, BindingResult result, RedirectAttributes attributes) {
+        if(result.hasErrors()) return "players/new";
         playerService.save(player);
         attributes.addFlashAttribute("successMessage", "アカウントの作成が完了しました");
         return "redirect:/players";
     }
 
     @PutMapping("{id}")
-    public String update(RedirectAttributes attributes, @PathVariable Long id, @ModelAttribute Player player) {
+    public String update(@PathVariable Long id, @Valid @ModelAttribute Player player, BindingResult result, RedirectAttributes attributes) {
+        if(result.hasErrors()) return "players/edit";
         player.setId(id);
         playerService.save(player);
         attributes.addFlashAttribute("successMessage", "アカウントの更新が完了しました");
@@ -64,7 +69,7 @@ public class PlayerController {
     }
 
     @DeleteMapping("{id}")
-    public String destroy(RedirectAttributes attributes, @PathVariable Long id) {
+    public String destroy(@PathVariable Long id, RedirectAttributes attributes) {
         playerService.delete(id);
         attributes.addFlashAttribute("successMessage", "アカウントの削除が完了しました");
         return "redirect:/players";

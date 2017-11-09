@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.example.sealing.type.RoleType;
 
 @Entity
@@ -12,11 +14,13 @@ public class Player {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty
     private String name;
     @Column(unique = true)
+    @NotEmpty
     private String userId;
     private String password;
-    private Integer roleType;
+    private Integer roleType = 0;
 
     public Long getId() {
         return id;
