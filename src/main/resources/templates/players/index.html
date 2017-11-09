@@ -12,6 +12,9 @@
               <strong class="panel-title">選手一覧</strong>
               <a href="/players/new" class="btn btn-default btn-xs pull-right">新規作成</a>
             </div>
+            <div class="panel-body" th:if="${successMessage}">
+              <div class="alert alert-success" th:text="${successMessage}"></div>
+            </div>
             <table class="table">
               <thead>
                 <tr>

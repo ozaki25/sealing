@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.sealing.entity.Player;
 import com.example.sealing.service.PlayerService;
@@ -48,21 +49,24 @@ public class PlayerController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute Player player) {
+    public String create(RedirectAttributes attributes, @ModelAttribute Player player) {
         playerService.save(player);
+        attributes.addFlashAttribute("successMessage", "アカウントの作成が完了しました");
         return "redirect:/players";
     }
 
     @PutMapping("{id}")
-    public String update(@PathVariable Long id, @ModelAttribute Player player) {
+    public String update(RedirectAttributes attributes, @PathVariable Long id, @ModelAttribute Player player) {
         player.setId(id);
         playerService.save(player);
+        attributes.addFlashAttribute("successMessage", "アカウントの更新が完了しました");
         return "redirect:/players";
     }
 
     @DeleteMapping("{id}")
-    public String destroy(@PathVariable Long id) {
+    public String destroy(RedirectAttributes attributes, @PathVariable Long id) {
         playerService.delete(id);
+        attributes.addFlashAttribute("successMessage", "アカウントの削除が完了しました");
         return "redirect:/players";
     }
 }

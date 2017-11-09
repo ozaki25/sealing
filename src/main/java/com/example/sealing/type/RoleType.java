@@ -10,7 +10,7 @@ public enum RoleType implements GrantedAuthority {
     private final String label;
     private final Integer value;
 
-    RoleType(String name, String label , Integer value) {
+    RoleType(String name, String label, Integer value) {
         this.name = name;
         this.label = label;
         this.value = value;

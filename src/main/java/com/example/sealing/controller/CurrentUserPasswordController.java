@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.sealing.service.PlayerService;
 
@@ -23,9 +24,10 @@ public class CurrentUserPasswordController {
     }
 
     @PatchMapping
-    public String update(Principal principal, @RequestParam String password, @RequestParam String passwordConfirm) {
+    public String update(Principal principal, RedirectAttributes attributes, @RequestParam String password, @RequestParam String passwordConfirm) {
         String userId = principal.getName();
         playerService.updatePassword(userId, password);
+        attributes.addFlashAttribute("successMessage", "パスワードを更新しました");
         return "redirect:/home";
     }
 }

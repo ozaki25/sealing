@@ -11,6 +11,9 @@
             <div class="panel-heading">
               <strong class="panel-title">メニュー</strong>
             </div>
+            <div class="panel-body" th:if="${successMessage}">
+              <div class="alert alert-success" th:text="${successMessage}"></div>
+            </div>
             <div class="list-group">
               <a href="/requests/new" class="list-group-item">新規申込</a>
               <a href="/daily_requests" class="list-group-item">申込日別一覧</a>

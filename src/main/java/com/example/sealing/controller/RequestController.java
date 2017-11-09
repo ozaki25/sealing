@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.sealing.entity.Request;
 import com.example.sealing.service.RequestService;
@@ -24,8 +25,9 @@ public class RequestController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute Request request) {
+    public String create(RedirectAttributes attributes, @ModelAttribute Request request) {
         requestService.save(request);
+        attributes.addFlashAttribute("successMessage", "申し込みが完了しました");
         return "redirect:/home";
     }
 }

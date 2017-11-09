@@ -2,7 +2,7 @@ package com.example.sealing.type;
 
 public enum StatusType {
     CREATING("作成中", 0),
-    REQUESTED("申請済", 1),
+    REQUESTED("申請済み", 1),
     APPROVED("承認済み", 2);
 
     private final String name;
