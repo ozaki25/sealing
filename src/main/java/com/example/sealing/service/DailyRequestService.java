@@ -1,4 +1,5 @@
 package com.example.sealing.service;
+/*
 import java.util.Date;
 import java.util.List;
 
@@ -44,3 +45,4 @@ public class DailyRequestService {
         dailyRequestRepository.delete(id);
     }
 }
+*/

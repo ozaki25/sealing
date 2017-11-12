@@ -1,5 +1,5 @@
 package com.example.sealing.entity;
-
+/*
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -76,3 +76,4 @@ public class DailyRequest {
                 + "]";
     }
 }
+*/

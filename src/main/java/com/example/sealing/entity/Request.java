@@ -1,5 +1,5 @@
 package com.example.sealing.entity;
-
+/*
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -49,3 +49,4 @@ public class Request {
         return "Request [id=" + id + ", name=" + name + ", date=" + date + "]";
     }
 }
+*/

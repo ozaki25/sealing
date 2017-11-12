@@ -28,7 +28,6 @@ public class PlayerService {
     public Player findByUserId(String userId) {
         return playerRepository.findByUserId(userId);
     }
-
     @Transactional
     public void save(Player player) {
         playerRepository.save(player);
@@ -36,6 +35,8 @@ public class PlayerService {
 
     @Transactional
     public void update(Player player) {
+        // mybatisのsqlをxmlで書いたらここもjpaと統一化できそう
+        // playerRepository.save(player);
         playerRepository.update(player);
     }
 
