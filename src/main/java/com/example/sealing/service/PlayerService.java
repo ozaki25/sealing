@@ -6,12 +6,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.sealing.entity.Player;
-import com.example.sealing.repository.PlayerRepository;
+import com.example.sealing.mapper.PlayerMapper;
 
 @Service
 public class PlayerService {
     @Autowired
-    private PlayerRepository playerRepository;
+    // private PlayerRepository playerRepository; // use jpa
+    private PlayerMapper playerRepository; // use mybatis
 
     @Transactional
     public List<Player> findAll() {
@@ -29,17 +30,22 @@ public class PlayerService {
     }
 
     @Transactional
-    public Player save(Player player) {
-        return playerRepository.save(player);
+    public void save(Player player) {
+        playerRepository.save(player);
     }
 
     @Transactional
-    public void delete(Long id) {
-        playerRepository.delete(id);
+    public void update(Player player) {
+        playerRepository.update(player);
     }
 
     @Transactional
     public void updatePassword(String userId, String password) {
         playerRepository.updatePassword(userId, password);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        playerRepository.delete(id);
     }
 }

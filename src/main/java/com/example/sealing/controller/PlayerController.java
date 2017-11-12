@@ -63,7 +63,7 @@ public class PlayerController {
     public String update(@PathVariable Long id, @Valid @ModelAttribute Player player, BindingResult result, RedirectAttributes attributes) {
         if(result.hasErrors()) return "players/edit";
         player.setId(id);
-        playerService.save(player);
+        playerService.update(player);
         attributes.addFlashAttribute("successMessage", "アカウントの更新が完了しました");
         return "redirect:/players";
     }
