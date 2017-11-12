@@ -1,5 +1,5 @@
 package com.example.sealing.repository;
-/*
+
 import java.util.Date;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,4 +19,3 @@ public interface DailyRequestRepository extends JpaRepository<DailyRequest, Long
     void updateStatus(Long id, Integer statusType);
 
 }
-*/

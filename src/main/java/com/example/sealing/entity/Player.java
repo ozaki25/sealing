@@ -1,17 +1,22 @@
 package com.example.sealing.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.example.sealing.type.RoleType;
 
-// @Entity
+@Entity
 public class Player {
-    // @Id
-    // @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     @NotEmpty
     private String name;
-    // @Column(unique = true)
+    @Column(unique = true)
     @NotEmpty
     private String userId;
     private String password;

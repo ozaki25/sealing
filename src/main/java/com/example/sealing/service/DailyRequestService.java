@@ -1,5 +1,5 @@
 package com.example.sealing.service;
-/*
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +13,8 @@ import com.example.sealing.repository.DailyRequestRepository;
 @Service
 public class DailyRequestService {
     @Autowired
-    private DailyRequestRepository dailyRequestRepository;
+    private DailyRequestRepository dailyRequestRepository; // use jpa
+    // private DailyRequestMapper dailyRequestRepository; // use mybatis
 
     @Transactional
     public List<DailyRequest> findAll() {
@@ -45,4 +46,3 @@ public class DailyRequestService {
         dailyRequestRepository.delete(id);
     }
 }
-*/

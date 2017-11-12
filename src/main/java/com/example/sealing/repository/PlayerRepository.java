@@ -1,5 +1,4 @@
 package com.example.sealing.repository;
-/*
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,4 +17,3 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     void updatePassword(String userId, String password);
 
 }
-*/

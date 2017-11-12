@@ -1,5 +1,5 @@
 package com.example.sealing.service;
-/*
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.sealing.entity.DailyRequest;
 import com.example.sealing.entity.Request;
-import com.example.sealing.repository.RequestRepository;
+import com.example.sealing.mapper.RequestMapper;
 
 @Service
 public class RequestService {
     @Autowired
-    private RequestRepository requestRepository;
+    // private RequestRepository requestRepository; // use jpa
+    private RequestMapper requestRepository; // use mybatis
     @Autowired
     private DailyRequestService dailyRequestService;
 
@@ -28,13 +29,13 @@ public class RequestService {
     }
 
     @Transactional
-    public Request save(Request request) {
+    public void save(Request request) {
         DailyRequest dailyRequest = dailyRequestService.findByDate(request.getDate());
         if(dailyRequest == null) {
             dailyRequest = dailyRequestService.save(new DailyRequest(request.getDate()));
         }
         request.setDailyRequest(dailyRequest);
-        return requestRepository.save(request);
+        requestRepository.save(request);
     }
 
     @Transactional
@@ -42,4 +43,3 @@ public class RequestService {
         requestRepository.delete(id);
     }
 }
-*/
