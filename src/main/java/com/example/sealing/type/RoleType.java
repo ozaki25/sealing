@@ -4,7 +4,8 @@ import org.springframework.security.core.GrantedAuthority;
 
 public enum RoleType implements GrantedAuthority {
     USER("ROLE_USER", "一般", 0),
-    ADMIN("ROLE_ADMIN", "管理者", 1);
+    ADMIN("ROLE_ADMIN", "管理者", 1),
+    ACTUATOR("ROLE_ACTUATOR", "運用者", 2);
 
     private final String name;
     private final String label;
@@ -35,6 +36,7 @@ public enum RoleType implements GrantedAuthority {
 
     public static RoleType getRoleTypeByValue(Integer value) {
         return value == 0 ? RoleType.USER :
-               value == 1 ? RoleType.ADMIN : null;
+               value == 1 ? RoleType.ADMIN :
+               value == 2 ? RoleType.ACTUATOR : null;
     }
 }
