@@ -1,0 +1,5 @@
+id, name, user_id, password, role_type
+1, アドミン, admin, pass, 1
+2, ユーザ, user, pass, 0
+3, アクチュエータ, actuator, pass, 2
+4, テスト, test, test, 0
