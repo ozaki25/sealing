@@ -22,6 +22,14 @@ public class Player {
     private String password;
     private Integer roleType = 0;
 
+    public Player() {}
+
+    public Player(String name, String userId, String password) {
+        this.name = name;
+        this.userId = userId;
+        this.password = password;
+    }
+
     public Long getId() {
         return id;
     }
