@@ -1,10 +1,13 @@
 package com.example.sealing.service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.sealing.bean.PlayerCsvBean;
 import com.example.sealing.entity.Player;
 import com.example.sealing.mapper.PlayerMapper;
 
@@ -48,5 +51,14 @@ public class PlayerService {
     @Transactional
     public void delete(Long id) {
         playerRepository.delete(id);
+    }
+
+    @Transactional
+    public List<PlayerCsvBean> getCsvFormatList() {
+        return new ArrayList<PlayerCsvBean>() {
+            {
+                findAll().forEach(p -> add(new PlayerCsvBean(p)));
+            }
+        };
     }
 }
